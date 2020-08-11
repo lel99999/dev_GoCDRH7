@@ -11,18 +11,17 @@ Vagrant.configure("2") do |config|
 #   trigger.run = { path:"subscription-manager register --username <username> --password <password> --auto-attach"}
 # end
 
-  config.vm.define "analyticsterminalRH7" do |analyticsterminalRH7|
-    analyticsterminalRH7.vm.box = "clouddood/RH7.5_baserepo"
-    analyticsterminalRH7.vm.hostname = "pythonRH7"
-    analyticsterminalRH7.vm.network "private_network", ip: "192.168.60.148"
-    analyticsterminalRH7.vm.provision "shell", :inline => "sudo echo '192.168.60.148 analyticsterminalRH7.local analyticsterminalRH7' >> /etc/hosts"
+  config.vm.define "gocdRH7" do |gocdRH7|
+    gocdRH7.vm.box = "clouddood/RH7.5_baserepo"
+    gocdRH7.vm.hostname = "gocdRH7"
+    gocdRH7.vm.network "private_network", ip: "192.168.60.148"
+    gocdRH7.vm.provision "shell", :inline => "sudo echo '192.168.60.148 analyticsterminalRH7.local gocdRH7' >> /etc/hosts"
 
     # Default 
     # Main
-    analyticsterminalRH7.vm.provision "main", type: "ansible" do |ansible|
-#     ansible.playbook = "deploy_AnalyticsTerminalRH7.yml"
-#     ansible.playbook = "deploy_AnalyticsTerminalTest.yml"
-      ansible.playbook = "deploy_AnalyticsTerminalTest.yml"
+    gocdRH7.vm.provision "main", type: "ansible" do |ansible|
+      ansible.playbook = "deploy_gocdRH7.yml"
+#     ansible.playbook = "deploy_gocdRH7Test.yml"
       ansible.inventory_path = "vagrant_hosts"
       #ansible.tags = ansible_tags
       #ansible.verbose = ansible_verbosity
@@ -30,8 +29,8 @@ Vagrant.configure("2") do |config|
       #ansible.limit = ansible_limit
     end
     # Update
-    analyticsterminalRH7.vm.provision "update", type: "ansible" do |ansible|
-      ansible.playbook = "deploy_AnalyticsTerminalPatchRH7.yml"
+    gocdRH7.vm.provision "update", type: "ansible" do |ansible|
+      ansible.playbook = "deploy_gocdPatchhRH7.yml"
       ansible.inventory_path = "vagrant_hosts"
       #ansible.tags = ansible_tags
       #ansible.verbose = ansible_verbosity
