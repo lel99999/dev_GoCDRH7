@@ -50,3 +50,61 @@ Vagrant.configure("2") do |config|
 #   trigger.run = { path: "subscription-manager clean"}
 # end
 end
+
+  ###########################
+  ### PIPELINES COMPONENT ###
+  ###########################
+
+  config.vm.define :ci_server do |server|
+    server.vm.box = "bento/centos-6.10"
+    server.vm.host_name = "ci-server.test.dev"
+
+    server.ssh.forward_agent = true
+
+    server.vm.provision "ansible" do |ansible|
+      ansible.playbook = "deploy_gocd.yml"
+      ansible.inventory_path = "vagrant_hosts"
+      ansible.tags = ansible_tags
+      ansible.verbose = ansible_verbosity
+      ansible.extra_vars = ansible_extra_vars
+      ansible.limit = ansible_limit
+    end
+
+    server.vm.network :private_network, ip: "10.0.1.26"
+  end
+
+  config.vm.define :ci_agent_1 do |server|
+    server.vm.box = "bento/centos-6.10"
+    server.vm.host_name = "ci-agent-1.test.dev"
+
+    server.ssh.forward_agent = true
+
+    server.vm.provision "ansible" do |ansible|
+      ansible.playbook = "deploy_gocd.yml"
+      ansible.inventory_path = "vagrant_hosts"
+      ansible.tags = ansible_tags
+      ansible.verbose = ansible_verbosity
+      ansible.extra_vars = ansible_extra_vars
+      ansible.limit = ansible_limit
+    end
+
+    server.vm.network :private_network, ip: "10.0.1.27"
+  end
+
+  config.vm.define :ci_terminal_1 do |server|
+    server.vm.box = "bento/centos-6.10"
+    server.vm.host_name = "ci-terminal-1.test.dev"
+
+    server.ssh.forward_agent = true
+
+    server.vm.provision "ansible" do |ansible|
+      ansible.playbook = "deploy_gocd.yml"
+      ansible.inventory_path = "vagrant_hosts"
+      ansible.tags = ansible_tags
+      ansible.verbose = ansible_verbosity
+      ansible.extra_vars = ansible_extra_vars
+      ansible.limit = ansible_limit
+    end
+
+    server.vm.network :private_network, ip: "10.0.1.28"
+  end
