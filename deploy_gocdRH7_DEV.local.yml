@@ -2,8 +2,8 @@
   vars:
     custom_repo: true
     deploy_iptables: true
-    envir: PROD
-#   envir: DEV.local
+#   envir: PROD
+    envir: DEV.local
   vars_files:
      - ~/RHACCOUNT
 - hosts: ci_server
