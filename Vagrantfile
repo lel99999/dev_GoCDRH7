@@ -45,7 +45,8 @@ Vagrant.configure("2") do |config|
   ###########################
 
   config.vm.define :ci_server do |server|
-    server.vm.box = "bento/centos-6.10"
+#   server.vm.box = "bento/centos-6.10"
+    server.vm.box = "clouddood/RH7.5_baserepo"
     server.vm.host_name = "ci-server.test.dev"
 
     server.ssh.forward_agent = true
@@ -63,7 +64,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :ci_agent_1 do |server|
-    server.vm.box = "bento/centos-6.10"
+#   server.vm.box = "bento/centos-6.10"
+    server.vm.box = "clouddood/RH7.5_baserepo"
     server.vm.host_name = "ci-agent-1.test.dev"
 
     server.ssh.forward_agent = true
@@ -81,7 +83,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.define :ci_terminal_1 do |server|
-    server.vm.box = "bento/centos-6.10"
+#   server.vm.box = "bento/centos-6.10"
+    server.vm.box = "clouddood/RH7.5_baserepo"
     server.vm.host_name = "ci-terminal-1.test.dev"
 
     server.ssh.forward_agent = true
