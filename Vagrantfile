@@ -46,6 +46,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define :ci_server do |server|
 #   server.vm.box = "bento/centos-6.10"
+#   server.vm.box = "clouddood/RH7.5_baserepo"
     server.vm.box = "clouddood/RH7.5_baserepo"
     server.vm.host_name = "ci-server.test.dev"
 
