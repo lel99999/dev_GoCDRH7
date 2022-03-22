@@ -9,4 +9,8 @@ Download: [RedHat](https://www.gocd.org/download/#redhat)<br/>
 - [https://www.lambdatest.com/blog/jenkins-vs-gocd-battle-of-ci-cd-tools/](https://www.lambdatest.com/blog/jenkins-vs-gocd-battle-of-ci-cd-tools/) <br/>
 
 #### Update
-
+- latest Version 21.4.0
+- Download: <br/>
+  Server: [https://download.gocd.org/binaries/21.4.0-13469/rpm/go-server-21.4.0-13469.noarch.rpm](https://download.gocd.org/binaries/21.4.0-13469/rpm/go-server-21.4.0-13469.noarch.rpm) <br/>
+  
+  Agent: [https://download.gocd.org/binaries/21.4.0-13469/rpm/go-agent-21.4.0-13469.noarch.rpm](https://download.gocd.org/binaries/21.4.0-13469/rpm/go-agent-21.4.0-13469.noarch.rpm) <br/>
