@@ -7,8 +7,8 @@
     - {role: common7, when: "install_glusterfs"}
     - {role: puppet_disable, when: "disable_puppet"}
     - {role: iptables, when: "iptables_config"}
-    - gocd_server
-    - gocd
+    - gocd_serverRH7
+#   - gocd
 
 - hosts: ci_agent
   become: yes
@@ -93,7 +93,7 @@
     - {role: epel, when: "use_epel and not 'production' in group_names"}
     - eod
     - talend # Talend goes here because it installs an older java
-    - gocd
+    - gocdRH7
     - {role: python, when: "custom_repo"}
     - {role: python-build, when: "not custom_repo"}
     - {role: python3, when: "custom_repo"}
