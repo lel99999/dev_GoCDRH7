@@ -55,13 +55,14 @@ Vagrant.configure("2") do |config|
     server.vm.provision "ansible" do |ansible|
       ansible.playbook = "deploy_gocd.yml"
       ansible.inventory_path = "vagrant_hosts"
-      ansible.tags = ansible_tags
-      ansible.verbose = ansible_verbosity
-      ansible.extra_vars = ansible_extra_vars
-      ansible.limit = ansible_limit
+#     ansible.tags = ansible_tags
+#     ansible.verbose = ansible_verbosity
+#     ansible.extra_vars = ansible_extra_vars
+#     ansible.limit = ansible_limit
     end
 
-    server.vm.network :private_network, ip: "10.0.1.26"
+#   server.vm.network :private_network, ip: "10.0.1.26"
+    server.vm.network :private_network, ip: "192.168.56.26"
   end
 
   config.vm.define :ci_agent_1 do |server|
@@ -74,13 +75,14 @@ Vagrant.configure("2") do |config|
     server.vm.provision "ansible" do |ansible|
       ansible.playbook = "deploy_gocd.yml"
       ansible.inventory_path = "vagrant_hosts"
-      ansible.tags = ansible_tags
-      ansible.verbose = ansible_verbosity
-      ansible.extra_vars = ansible_extra_vars
-      ansible.limit = ansible_limit
+#     ansible.tags = ansible_tags
+#     ansible.verbose = ansible_verbosity
+#     ansible.extra_vars = ansible_extra_vars
+#     ansible.limit = ansible_limit
     end
 
-    server.vm.network :private_network, ip: "10.0.1.27"
+#   server.vm.network :private_network, ip: "10.0.1.27"
+    server.vm.network :private_network, ip: "192.168.56.27"
   end
 
   config.vm.define :ci_terminal_1 do |server|
@@ -93,13 +95,14 @@ Vagrant.configure("2") do |config|
     server.vm.provision "ansible" do |ansible|
       ansible.playbook = "deploy_gocd.yml"
       ansible.inventory_path = "vagrant_hosts"
-      ansible.tags = ansible_tags
-      ansible.verbose = ansible_verbosity
-      ansible.extra_vars = ansible_extra_vars
-      ansible.limit = ansible_limit
+#     ansible.tags = ansible_tags
+#     ansible.verbose = ansible_verbosity
+#     ansible.extra_vars = ansible_extra_vars
+#     ansible.limit = ansible_limit
     end
 
-    server.vm.network :private_network, ip: "10.0.1.28"
+#   server.vm.network :private_network, ip: "10.0.1.28"
+    server.vm.network :private_network, ip: "192.168.56.28"
   end
 
 #######################################################################################################################################
