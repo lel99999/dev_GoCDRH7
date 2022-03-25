@@ -11,6 +11,8 @@
 #   - gocd
 
 - hosts: ci_agent
+  vars:
+    - custom_repo: true
   become: yes
   become_method: sudo
   serial: 1
