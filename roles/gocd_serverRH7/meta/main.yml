@@ -1,3 +1,4 @@
 ---
 dependencies:
-  - role: jdk
+  - role: openjdk1.8
+# - role: jdk
