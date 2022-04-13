@@ -5,6 +5,12 @@ GoCD Deployment to RHEL 7.x
 Latest version: 20.10.0 - Released 11/23/20<br/>
 Download: [RedHat](https://www.gocd.org/download/#redhat)<br/>
 
+#### GoCD Documentation
+- Pipelines
+  [https://docs.gocd.org/current/gocd_on_kubernetes/sample_pipelines_explained.html](https://docs.gocd.org/current/gocd_on_kubernetes/sample_pipelines_explained.html) <br/>
+- Cookiecutter
+  [https://cookiecutter.readthedocs.io/en/1.7.0/README.html](https://cookiecutter.readthedocs.io/en/1.7.0/README.html) <br/>
+
 #### GoCD vs. Jenkins
 - [https://www.lambdatest.com/blog/jenkins-vs-gocd-battle-of-ci-cd-tools/](https://www.lambdatest.com/blog/jenkins-vs-gocd-battle-of-ci-cd-tools/) <br/>
 
