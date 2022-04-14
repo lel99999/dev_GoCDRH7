@@ -6,7 +6,7 @@ ci_server ansible_ssh_host=192.168.60.26
 #ci_server ansible_ssh_host=10.0.1.26
 
 [ci_agent]
-ci_agent_1 ansible_ssh_host=19.168.60.27
+ci_agent_1 ansible_ssh_host=192.168.60.27
 #ci_agent_1 ansible_ssh_host=10.0.1.27
 
 [ci_terminal]

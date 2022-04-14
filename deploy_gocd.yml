@@ -88,27 +88,27 @@
   become: yes
   become_method: sudo
   roles:
-    - {role: common, when: "install_glusterfs"}
+    - {role: common7, when: "install_glusterfs"}
     - devtools
     - {role: puppet_disable, when: "disable_puppet"}
     - {role: iptables, when: "iptables_config"}
-    - {role: epel, when: "use_epel and not 'production' in group_names"}
-    - eod
-    - talend # Talend goes here because it installs an older java
+    - {role: epel7, when: "use_epel and not 'production' in group_names"}
+    - eod7
+#   - talend # Talend goes here because it installs an older java
     - gocdRH7
     - {role: python, when: "custom_repo"}
     - {role: python-build, when: "not custom_repo"}
     - {role: python3, when: "custom_repo"}
     - {role: python3-build, when: "not custom_repo"}
     - python-libs
-    - r-core
-    - r-libs
+#   - r-core
+#   - r-libs
     - {role: ruby, when: "install_ruby"}
-    - pycharm
-    - r-studio-desktop
-    - clouseau
+#   - pycharm
+#   - r-studio-desktop
+#   - clouseau
     - {role: pentaho, when: "install_pentaho"}
-    - sublime
+#   - sublime
 #   - julia
 
   tasks:
