@@ -20,3 +20,12 @@ Download: [RedHat](https://www.gocd.org/download/#redhat)<br/>
   Server: [https://download.gocd.org/binaries/21.4.0-13469/rpm/go-server-21.4.0-13469.noarch.rpm](https://download.gocd.org/binaries/21.4.0-13469/rpm/go-server-21.4.0-13469.noarch.rpm) <br/>
   
   Agent: [https://download.gocd.org/binaries/21.4.0-13469/rpm/go-agent-21.4.0-13469.noarch.rpm](https://download.gocd.org/binaries/21.4.0-13469/rpm/go-agent-21.4.0-13469.noarch.rpm) <br/>
+
+#### Postgres Repo Info
+- Repo/RPM URLs Info
+  [https://yum.postgresql.org/repopackages/](https://yum.postgresql.org/repopackages/) <br/>
+  
+- RHEL 7 x86_64
+  - [https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm](https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm) <br/>
+
+
