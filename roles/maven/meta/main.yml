@@ -1,4 +1,5 @@
 ---
 dependencies:
-  - role: shared
-  - role: jdk
+  - role: shared7
+  - role: openjdk1.8
+# - role: jdk

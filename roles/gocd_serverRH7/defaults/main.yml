@@ -3,10 +3,13 @@
 #gocd_server_package_path: /tmp
 #gocd_server_package_name: go-server-17.10.0-5380.noarch.rpm
 #gocd_server_checksum: a0f2805698868dd338031bfbf73b391dd29ad34f
-gocd_server_package_url: https://download.gocd.org/binaries/21.4.0-13469/rpm/go-server-21.4.0-13469.noarch.rpm
+#gocd_server_package_url: https://download.gocd.org/binaries/21.4.0-13469/rpm/go-server-21.4.0-13469.noarch.rpm
+gocd_server_package_url: https://download.gocd.org/binaries/22.1.0-13913/rpm/go-server-22.1.0-13913.noarch.rpm
 gocd_server_package_path: /tmp
-gocd_server_package_name: go-server-21.4.0-13469.noarch.rpm
-gocd_server_checksum: 791df4f002a6ae1e19cdccaa79c089a911c4cb0cfa46b3e8082bd47c1b33a621
+gocd_server_package_name: go-server-22.1.0-13913.noarch.rpm
+#gocd_server_checksum: 9930077abc56634a7b15088d6d0d5941   #md5
+gocd_server_checksum: 094e602bbdcf5f0a7c2120239737b052369d1a4f #sha1
+#gocd_server_checksum: 1bac42946c3533595b1c8952a2069247365448941f977850d3dc322ef9170544 #sha256
 gocd_server_work_dir: /var/lib/go-server
 gocd_server_port: 8153
 gocd_server_ssl_port: 8154
