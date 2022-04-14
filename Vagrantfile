@@ -62,7 +62,7 @@ Vagrant.configure("2") do |config|
     end
 
 #   server.vm.network :private_network, ip: "10.0.1.26"
-    server.vm.network :private_network, ip: "192.168.56.26"
+    server.vm.network :private_network, ip: "192.168.60.26"
   end
 
   config.vm.define :ci_agent_1 do |server|
@@ -82,7 +82,7 @@ Vagrant.configure("2") do |config|
     end
 
 #   server.vm.network :private_network, ip: "10.0.1.27"
-    server.vm.network :private_network, ip: "192.168.56.27"
+    server.vm.network :private_network, ip: "192.168.60.27"
   end
 
   config.vm.define :ci_terminal_1 do |server|
@@ -102,7 +102,7 @@ Vagrant.configure("2") do |config|
     end
 
 #   server.vm.network :private_network, ip: "10.0.1.28"
-    server.vm.network :private_network, ip: "192.168.56.28"
+    server.vm.network :private_network, ip: "192.168.60.28"
   end
 
 #######################################################################################################################################
