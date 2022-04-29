@@ -2,6 +2,10 @@
 GoCD Deployment to RHEL 7.x
 
 [GoCD Home](https://gocd.org)<br/>
+Lstest version: 22.1.0 - Released 3/21/22<br/>
+Download Server: [RedHat](https://download.gocd.org/binaries/22.1.0-13913/rpm/go-server-22.1.0-13913.noarch.rpm) <br/>
+Download Agent: [RedHat Agent](https://download.gocd.org/binaries/22.1.0-13913/rpm/go-agent-22.1.0-13913.noarch.rpm) <br/>
+
 Latest version: 20.10.0 - Released 11/23/20<br/>
 Download: [RedHat](https://www.gocd.org/download/#redhat)<br/>
 
