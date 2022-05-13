@@ -1,5 +1,7 @@
 ---
 - hosts: ci_terminal
+  vars:
+    - custom_repo: true
   vars_files:
     - ~/RHACCOUNT
   become: yes
