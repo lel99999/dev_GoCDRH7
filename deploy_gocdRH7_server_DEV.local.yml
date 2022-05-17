@@ -44,6 +44,9 @@
     - name: Install X Windows
       shell: yum groupinstall "Server with GUI" -y  
 
+    - name: Set Graphical As Default
+      shell: systemctl set-default graphical.target
+
   roles:
 #   - {role: common, when: "install_glusterfs"}
     - {role: common7, when: "install_glusterfs"}
