@@ -1,0 +1,61 @@
+---
+- hosts: ci_agent
+  vars:
+    - custom_repo: true
+  vars_files:
+    - ~/RHACCOUNT
+  become: yes
+  become_method: sudo
+  serial: 1
+  max_fail_percentage: 10
+
+
+  pre_tasks:
+    - debug:
+        msg: "Variables: _uid = {{ _uid }}, _pwd = **********"
+        msg: "Variables: _uid = {{ _uid }}, _pwd = {{ _pwd }}"
+    - name: register RHEL7.5
+      command: "/usr/bin/subscription-manager register --username {{ _uid }} --password {{ _pwd }} --auto-attach --force"
+#     when: _uid != "" and _pwd != ""
+#     command: "/usr/bin/subscription-manager register --username <name> --password <password> --auto-attach"
+    - name: register RHEL7 repos necessary for Chrome (optional, extras)
+      command: "/usr/bin/subscription-manager repos --enable=rhel-7-server-rpms --enable=rhel-7-server-extras-rpms --enable=rhel-7-server-optional-rpms"
+    - name: register RHEL7 RHSCL Repo
+      shell: "/usr/bin/subscription-manager repos --enable=rhel-server-rhscl-7-rpms"
+    - name: register RHEL7 DevTools
+      shell: "/usr/bin/subscription-manager repos --enable=rhel-7-server-devtools-rpms"
+    - name: list RHEL enabled repos
+      shell: "/usr/bin/subscription-manager repos --list-enabled"
+      register: enabled_repos
+    - debug:
+        msg: "RHEL Enabled Repos: {{ enabled_repos }}"
+
+  tasks:
+    - name: install libselinux-python
+      yum:
+        name: libselinux-python
+        state: present
+
+  roles:
+#   - {role: common, when: "install_glusterfs"}
+    - {role: common7, when: "install_glusterfs"}
+#   - devtools
+#   - devtools6
+    - devtools7
+    - {role: puppet_disable, when: "disable_puppet"}
+    - {role: iptables, when: "iptables_config"}
+#   - gocd
+    - gocdRH7
+    - pentaho
+##  - {role: python, when: "custom_repo"}
+##  - {role: python-build, when: "not custom_repo"}
+##  - {role: python3, when: "custom_repo"}
+##  - {role: python3-build, when: "not custom_repo"}
+##  - python-libs
+##  - odbc
+    - odbc7
+    - {role: ruby, when: "install_ruby"}
+    - sqitch
+    - nodejs
+    - maven
+    #- julia
