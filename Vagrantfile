@@ -53,7 +53,8 @@ Vagrant.configure("2") do |config|
     server.ssh.forward_agent = true
 
     server.vm.provision "ansible" do |ansible|
-      ansible.playbook = "deploy_gocd.yml"
+#     ansible.playbook = "deploy_gocd.yml"
+      ansible.playbook = "deploy_gocdRH7_server_DEV.local.yml"
       ansible.inventory_path = "vagrant_hosts"
 #     ansible.tags = ansible_tags
 #     ansible.verbose = ansible_verbosity
@@ -62,7 +63,7 @@ Vagrant.configure("2") do |config|
     end
 
 #   server.vm.network :private_network, ip: "10.0.1.26"
-    server.vm.network :private_network, ip: "192.168.60.26"
+    server.vm.network :private_network, ip: "192.168.56.26"
   end
 
   config.vm.define :ci_agent_1 do |server|
@@ -73,7 +74,8 @@ Vagrant.configure("2") do |config|
     server.ssh.forward_agent = true
 
     server.vm.provision "ansible" do |ansible|
-      ansible.playbook = "deploy_gocd.yml"
+#     ansible.playbook = "deploy_gocd.yml"
+      ansible.playbook = "deploy_gocdRH7_agent_DEV.local.yml"
       ansible.inventory_path = "vagrant_hosts"
 #     ansible.tags = ansible_tags
 #     ansible.verbose = ansible_verbosity
@@ -82,7 +84,7 @@ Vagrant.configure("2") do |config|
     end
 
 #   server.vm.network :private_network, ip: "10.0.1.27"
-    server.vm.network :private_network, ip: "192.168.60.27"
+    server.vm.network :private_network, ip: "192.168.56.27"
   end
 
   config.vm.define :ci_terminal_1 do |server|
@@ -102,7 +104,7 @@ Vagrant.configure("2") do |config|
     end
 
 #   server.vm.network :private_network, ip: "10.0.1.28"
-    server.vm.network :private_network, ip: "192.168.60.28"
+    server.vm.network :private_network, ip: "192.168.56.28"
   end
 
 #######################################################################################################################################
