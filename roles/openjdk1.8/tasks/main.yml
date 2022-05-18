@@ -4,7 +4,11 @@
     name: "{{ item }}"
     state: present
     disable_gpg_check: yes
-  with_items: "{{ jdk_packages }}"
+# with_items: "{{ jdk_packages }}"
+  with_items:
+    - java-1.8.0-openjdk
+    - java-1.8.0-openjdk-devel
+    - libselinux-python-  
 
 - name: Ensure Java environment variables are set
   template:
