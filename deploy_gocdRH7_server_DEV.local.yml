@@ -41,15 +41,15 @@
         state: present
 #     shell: yum install -y bash-completion bash-completion-extras
 
-    - name: Install X Windows
-      shell: yum groupinstall "X Window Server" -y  
+#   - name: Install X Windows
+#     shell: yum groupinstall "X Window Server" -y  
 #     shell: yum groupinstall "Server with GUI" -y  
 
-    - name: Install GNOME
-      shell: yum groupinstall "GNOME" -y  
+#   - name: Install GNOME
+#     shell: yum groupinstall "GNOME" -y  
 
-    - name: Set Graphical As Default
-      shell: systemctl set-default graphical.target
+#   - name: Set Graphical As Default
+#     shell: systemctl set-default graphical.target
 
   roles:
 #   - {role: common, when: "install_glusterfs"}
