@@ -1,7 +1,7 @@
 ---
 dependencies:
-  - {role: python, when: "install_python and custom_repo"}
-  - {role: python-build, when: "not custom_repo"}
+# - {role: python, when: "install_python and custom_repo"}
+# - {role: python-build, when: "not custom_repo"}
   - role: postgresql-client7
   - role: openjdk1.8
 # - role: jdk
