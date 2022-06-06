@@ -47,7 +47,7 @@ Vagrant.configure("2") do |config|
   config.vm.define :ci_server do |server|
 #   server.vm.box = "bento/centos-6.10"
 #   server.vm.box = "clouddood/RH7.5_baserepo"
-    server.vm.box = "clouddood/RH7.5_baserepo"
+    server.vm.box = "clouddood/RH7.9_infra"
     server.vm.host_name = "ci-server.test.dev"
 
     server.ssh.forward_agent = true
@@ -63,12 +63,13 @@ Vagrant.configure("2") do |config|
     end
 
 #   server.vm.network :private_network, ip: "10.0.1.26"
-    server.vm.network :private_network, ip: "192.168.56.26"
+    server.vm.network :private_network, ip: "192.168.60.26"
   end
 
   config.vm.define :ci_agent_1 do |server|
 #   server.vm.box = "bento/centos-6.10"
-    server.vm.box = "clouddood/RH7.5_baserepo"
+#   server.vm.box = "clouddood/RH7.5_baserepo"
+    server.vm.box = "clouddood/RH7.9_infra"
     server.vm.host_name = "ci-agent-1.test.dev"
 
     server.ssh.forward_agent = true
@@ -84,12 +85,13 @@ Vagrant.configure("2") do |config|
     end
 
 #   server.vm.network :private_network, ip: "10.0.1.27"
-    server.vm.network :private_network, ip: "192.168.56.27"
+    server.vm.network :private_network, ip: "192.168.60.27"
   end
 
   config.vm.define :ci_terminal_1 do |server|
 #   server.vm.box = "bento/centos-6.10"
-    server.vm.box = "clouddood/RH7.5_baserepo"
+#   server.vm.box = "clouddood/RH7.5_baserepo"
+    server.vm.box = "clouddood/RH7.9_infra"
     server.vm.host_name = "ci-terminal-1.test.dev"
 
     server.ssh.forward_agent = true
@@ -104,7 +106,7 @@ Vagrant.configure("2") do |config|
     end
 
 #   server.vm.network :private_network, ip: "10.0.1.28"
-    server.vm.network :private_network, ip: "192.168.56.28"
+    server.vm.network :private_network, ip: "192.168.60.28"
   end
 
 #######################################################################################################################################

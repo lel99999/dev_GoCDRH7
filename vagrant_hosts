@@ -1,14 +1,11 @@
-[research_environment]
-gocdRH7 ansible_host=192.168.56.148 
-
 [ci_server]
-ci_server ansible_ssh_host=192.168.56.26
+ci_server ansible_ssh_host=192.168.60.26
 #ci_server ansible_ssh_host=10.0.1.26
 
 [ci_agent]
-ci_agent_1 ansible_ssh_host=192.168.56.27
+ci_agent_1 ansible_ssh_host=192.168.60.27
 #ci_agent_1 ansible_ssh_host=10.0.1.27
 
 [ci_terminal]
-ci_terminal_1 ansible_ssh_host=192.168.56.28
+ci_terminal_1 ansible_ssh_host=192.168.60.28
 #ci_terminal_1 ansible_ssh_host=10.0.1.28
