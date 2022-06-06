@@ -1,7 +1,13 @@
 # main.yml
 ---
 - name: Add mpapis public key
-  shell: "curl -sSL https://rvm.io/mpapis.asc | gpg --import -"
+# shell: "curl -sSL https://rvm.io/mpapis.asc | gpg --import -"
+  shell: "curl -sSL https://rvm.io/mpapis.asc | gpg2 --import -"
+  tags:
+    - ruby
+
+- name: Add pkuczynski public key
+  shell: "curl -sSL https://rvm.io/pkuczynski.asc | gpg2 --import -"
   tags:
     - ruby
 
@@ -12,28 +18,58 @@
   tags:
     - ruby
 
-- name: Get script file
-  get_url:
-    url: https://raw.githubusercontent.com/wayneeseguin/rvm/stable/binscripts/rvm-installer
-    dest: /tmp/rvm-installer.sh
-    force: yes
-  tags:
-    - ruby
+- name: Install Ruby Requirements
+  yum:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - gcc-c++
+    - patch
+    - readline
+    - readline-devel
+    - zlib
+    - zlib-devel
+    - libffi-devel
+    - openssl-devel
+    - make
+    - bzip2
+    - autoconf
+    - automake
+    - libtool
+    - bison
+    - sqlite-devel
 
-- name: Configure rvm-installer
-  file:
-    dest: /tmp/rvm-installer.sh
-    mode: 0755
-  tags:
-    - ruby
+- name: Install latest stable RVM
+  shell: "curl -L get.rvm.io | bash -s stable"
 
-- name: Install RVM and stable Ruby
-  command: "/tmp/rvm-installer.sh stable --ruby"
-  register: install_rvm_ruby
-  changed_when: '"Already installed" not in install_rvm_ruby.stderr or "Upgrading" in install_rvm_ruby.stdout'
-  when: install_ruby
-  tags:
-    - ruby
+- name: Load RVM environment
+  shell: source /etc/profile.d/rvm.sh
+
+- name: Reload RVM 
+  shell: /usr/local/rvm/bin/rvm reload
+
+#- name: Get script file
+#  get_url:
+#    url: https://raw.githubusercontent.com/wayneeseguin/rvm/stable/binscripts/rvm-installer
+#    dest: /tmp/rvm-installer.sh
+#    force: yes
+#  tags:
+#    - ruby
+
+#- name: Configure rvm-installer
+#  file:
+#    dest: /tmp/rvm-installer.sh
+#    mode: 0755
+#  tags:
+#    - ruby
+
+#- name: Install RVM and stable Ruby
+#  command: "/tmp/rvm-installer.sh stable --ruby"
+#  register: install_rvm_ruby
+#  changed_when: '"Already installed" not in install_rvm_ruby.stderr or "Upgrading" in install_rvm_ruby.stdout'
+#  when: install_ruby
+#  tags:
+#    - ruby
 
 - name: Ensure /etc/rvmrc is available
   file:
@@ -54,42 +90,42 @@
   tags:
     - ruby
 
-- name: Create symlink for ruby to /usr/bin if not present
-  file:
-    state: link
-    src: /usr/local/rvm/rubies/default/bin/ruby
-    dest: /usr/bin/ruby
-  when: install_ruby and (not stat_result.results[0].stat.exists)
-  tags:
-    - ruby
+#- name: Create symlink for ruby to /usr/bin if not present
+#  file:
+#    state: link
+#    src: /usr/local/rvm/rubies/default/bin/ruby
+#    dest: /usr/bin/ruby
+#  when: install_ruby and (not stat_result.results[0].stat.exists)
+#  tags:
+#    - ruby
 
-- name: Create symlink for ruby to /usr/local/bin otherwise
-  file:
-    state: link
-    src: /usr/local/rvm/rubies/default/bin/ruby
-    dest: /usr/local/bin/ruby
-  when: install_ruby and (not stat_result.results[0].stat.exists)
-  tags:
-    - ruby
+#- name: Create symlink for ruby to /usr/local/bin otherwise
+#  file:
+#    state: link
+#    src: /usr/local/rvm/rubies/default/bin/ruby
+#    dest: /usr/local/bin/ruby
+#  when: install_ruby and (not stat_result.results[0].stat.exists)
+#  tags:
+#    - ruby
 
-- name: Create symlink for gem to /usr/bin if not present
-  file:
-    state: link
-    src: /usr/local/rvm/rubies/default/bin/gem
-    dest: /usr/bin/gem
-  when: install_ruby and (not stat_result.results[1].stat.exists)
-  tags:
-    - ruby
+#- name: Create symlink for gem to /usr/bin if not present
+#  file:
+#    state: link
+#    src: /usr/local/rvm/rubies/default/bin/gem
+#    dest: /usr/bin/gem
+#  when: install_ruby and (not stat_result.results[1].stat.exists)
+#  tags:
+#    - ruby
 
-- name: Create symlink for gem to /usr/local/bin otherwise
-  file:
-    state: link
-    src: /usr/local/rvm/rubies/default/bin/gem
-    dest: /usr/local/bin/gem
-  when: install_ruby and (stat_result.results[1].stat.exists)
-  tags:
-    - ruby
-
+#- name: Create symlink for gem to /usr/local/bin otherwise
+#  file:
+#    state: link
+#    src: /usr/local/rvm/rubies/default/bin/gem
+#    dest: /usr/local/bin/gem
+#  when: install_ruby and (stat_result.results[1].stat.exists)
+#  tags:
+#    - ruby
+#
 - name: Install bundler globally
   gem:
     name: bundler
