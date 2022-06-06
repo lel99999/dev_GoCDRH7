@@ -88,6 +88,50 @@ Vagrant.configure("2") do |config|
     server.vm.network :private_network, ip: "192.168.60.27"
   end
 
+  config.vm.define :ci_agent_2 do |server|
+#   server.vm.box = "bento/centos-6.10"
+#   server.vm.box = "clouddood/RH7.5_baserepo"
+    server.vm.box = "clouddood/RH7.9_infra"
+    server.vm.host_name = "ci-agent-2.test.dev"
+
+    server.ssh.forward_agent = true
+
+    server.vm.provision "ansible" do |ansible|
+#     ansible.playbook = "deploy_gocd.yml"
+      ansible.playbook = "deploy_gocdRH7_agent_DEV.local.yml"
+      ansible.inventory_path = "vagrant_hosts"
+#     ansible.tags = ansible_tags
+#     ansible.verbose = ansible_verbosity
+#     ansible.extra_vars = ansible_extra_vars
+#     ansible.limit = ansible_limit
+    end
+
+#   server.vm.network :private_network, ip: "10.0.1.28"
+    server.vm.network :private_network, ip: "192.168.60.28"
+  end
+
+  config.vm.define :ci_agent_3 do |server|
+#   server.vm.box = "bento/centos-6.10"
+#   server.vm.box = "clouddood/RH7.5_baserepo"
+    server.vm.box = "clouddood/RH7.9_infra"
+    server.vm.host_name = "ci-agent-3.test.dev"
+
+    server.ssh.forward_agent = true
+
+    server.vm.provision "ansible" do |ansible|
+#     ansible.playbook = "deploy_gocd.yml"
+      ansible.playbook = "deploy_gocdRH7_agent_DEV.local.yml"
+      ansible.inventory_path = "vagrant_hosts"
+#     ansible.tags = ansible_tags
+#     ansible.verbose = ansible_verbosity
+#     ansible.extra_vars = ansible_extra_vars
+#     ansible.limit = ansible_limit
+    end
+
+#   server.vm.network :private_network, ip: "10.0.1.29"
+    server.vm.network :private_network, ip: "192.168.60.29"
+  end
+
   config.vm.define :ci_terminal_1 do |server|
 #   server.vm.box = "bento/centos-6.10"
 #   server.vm.box = "clouddood/RH7.5_baserepo"
@@ -105,8 +149,8 @@ Vagrant.configure("2") do |config|
 #     ansible.limit = ansible_limit
     end
 
-#   server.vm.network :private_network, ip: "10.0.1.28"
-    server.vm.network :private_network, ip: "192.168.60.28"
+#   server.vm.network :private_network, ip: "10.0.1.30"
+    server.vm.network :private_network, ip: "192.168.60.30"
   end
 
 #######################################################################################################################################
