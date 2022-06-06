@@ -71,6 +71,11 @@
     name: go-agent
     state: started
 
+- name: Check log folders existence
+  stat:
+    path: "{{ gocd_log_file_locations }}"
+  register: gocd_log
+
 - name: Set recursive admin permissions on log folders
   acl:
     path: "{{ item }}"
@@ -80,6 +85,7 @@
     recursive: yes
     state: present
   with_items: "{{ gocd_log_file_locations }}"
+  when: gocd_log.stat.exists
 
 - name: Set default admin permissions on log folders
   acl:
@@ -90,4 +96,5 @@
     default: yes
     state: present
   with_items: "{{ gocd_log_file_locations }}"
+  when: gocd_log.stat.exists
 
