@@ -7,11 +7,12 @@ postgres_repository_repo: "https://download.postgresql.org/pub/repos/yum/10/redh
 ##postgres_repository_url: "https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
 #postgres_repository_url: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm" 
 postgres_repository_url: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
+postgres13_repository_url: "https://download.postgresql.org/pub/repos/yum/13/redhat/rhel-7.9-x86_64/postgresql13-13.7-1PGDG.rhel7.x86_64.rpm"
 #postgres_rpm: "https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-redhat10-10-2.noarch.rpm"
 #postgres_rpm: "https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
 postgres_rpm: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
 #postgres_repository_key_url: "https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-10"
-postgres_repository_key_url: "https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-13"
+postgres13_repository_key_url: "https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-13"
 postgres_repository_name: pgdg13
 postgres_install_dir: /usr/pgsql-13
 postgres_install_repository: True
