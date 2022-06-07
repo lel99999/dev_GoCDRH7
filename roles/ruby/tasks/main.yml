@@ -46,8 +46,24 @@
 - name: Load RVM environment
   shell: source /etc/profile.d/rvm.sh
 
-- name: Set Ruby 3.0.0 Global
-  shell: /usr/local/rvm/bin/rvm use 3.0 --default
+- name: RVM  install Ruby 2.7
+  become: yes
+  become_method: sudo
+  shell: /usr/local/rvm/bin/rvm install 2.7
+
+- name: RVM  install Ruby 3.0
+  become: yes
+  become_method: sudo
+  shell: /usr/local/rvm/bin/rvm install 3.0
+
+- name: RVM set default 2.7.2
+  shell: /usr/local/rvm/bin/rvm alias create default 2.7.2
+
+- name: Set Ruby 2.7.x Global
+  shell: /usr/local/rvm/bin/rvm use 2.7 --default
+
+- name: Install lastest Ruby Gems
+  shell: /usr/local/rvm/bin/rvm rubygems current
 
 #- name: RVM  install Ruby 2.7
 #  become: yes
@@ -133,13 +149,16 @@
     - ruby
 
 - name: Install bundler globally
-  gem:
-    name: bundler
-    state: present
-    user_install: no
-  when: install_ruby
-  tags:
-    - ruby
+  shell: bash -lc "gem install bundler"
+
+##- name: Install bundler globally
+##  gem:
+##    name: bundler
+##    state: present
+##    user_install: no
+##  when: install_ruby
+##  tags:
+##    - ruby
 
 - name: Create symlink for Bundler
   file:
