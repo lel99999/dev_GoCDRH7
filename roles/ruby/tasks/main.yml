@@ -40,13 +40,19 @@
     - sqlite-devel
 
 - name: Install latest stable RVM
-  shell: "curl -L get.rvm.io | bash -s stable"
+# shell: "curl -L get.rvm.io | bash -s stable --ruby"
+  shell: "curl -L get.rvm.io | bash -s -- --version latest"
 
 - name: Load RVM environment
   shell: source /etc/profile.d/rvm.sh
 
-- name: Reload RVM 
-  shell: /usr/local/rvm/bin/rvm reload
+- name: Set Ruby 3.0.0 Global
+  shell: /usr/local/rvm/bin/rvm use 3.0 --default
+
+#- name: RVM  install Ruby 2.7
+#  become: yes
+#  become_method: sudo
+#  shell: /usr/local/rvm/bin/rvm install 2.7
 
 #- name: Get script file
 #  get_url:
@@ -90,42 +96,42 @@
   tags:
     - ruby
 
-#- name: Create symlink for ruby to /usr/bin if not present
-#  file:
-#    state: link
-#    src: /usr/local/rvm/rubies/default/bin/ruby
-#    dest: /usr/bin/ruby
-#  when: install_ruby and (not stat_result.results[0].stat.exists)
-#  tags:
-#    - ruby
+- name: Create symlink for ruby to /usr/bin if not present
+  file:
+    state: link
+    src: /usr/local/rvm/rubies/default/bin/ruby
+    dest: /usr/bin/ruby
+  when: install_ruby and (not stat_result.results[0].stat.exists)
+  tags:
+    - ruby
 
-#- name: Create symlink for ruby to /usr/local/bin otherwise
-#  file:
-#    state: link
-#    src: /usr/local/rvm/rubies/default/bin/ruby
-#    dest: /usr/local/bin/ruby
-#  when: install_ruby and (not stat_result.results[0].stat.exists)
-#  tags:
-#    - ruby
+- name: Create symlink for ruby to /usr/local/bin otherwise
+  file:
+    state: link
+    src: /usr/local/rvm/rubies/default/bin/ruby
+    dest: /usr/local/bin/ruby
+  when: install_ruby and (not stat_result.results[0].stat.exists)
+  tags:
+    - ruby
 
-#- name: Create symlink for gem to /usr/bin if not present
-#  file:
-#    state: link
-#    src: /usr/local/rvm/rubies/default/bin/gem
-#    dest: /usr/bin/gem
-#  when: install_ruby and (not stat_result.results[1].stat.exists)
-#  tags:
-#    - ruby
+- name: Create symlink for gem to /usr/bin if not present
+  file:
+    state: link
+    src: /usr/local/rvm/rubies/default/bin/gem
+    dest: /usr/bin/gem
+  when: install_ruby and (not stat_result.results[1].stat.exists)
+  tags:
+    - ruby
 
-#- name: Create symlink for gem to /usr/local/bin otherwise
-#  file:
-#    state: link
-#    src: /usr/local/rvm/rubies/default/bin/gem
-#    dest: /usr/local/bin/gem
-#  when: install_ruby and (stat_result.results[1].stat.exists)
-#  tags:
-#    - ruby
-#
+- name: Create symlink for gem to /usr/local/bin otherwise
+  file:
+    state: link
+    src: /usr/local/rvm/rubies/default/bin/gem
+    dest: /usr/local/bin/gem
+  when: install_ruby and (stat_result.results[1].stat.exists)
+  tags:
+    - ruby
+
 - name: Install bundler globally
   gem:
     name: bundler
