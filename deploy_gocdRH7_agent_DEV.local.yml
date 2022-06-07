@@ -46,7 +46,7 @@
     - {role: iptables, when: "iptables_config"}
 #   - gocd
     - gocdRH7
-    - pentaho
+##  - pentaho
 ##  - {role: python, when: "custom_repo"}
 ##  - {role: python-build, when: "not custom_repo"}
 ##  - {role: python3, when: "custom_repo"}
