@@ -1,9 +1,9 @@
 ---
-#- name: Make sure latest EPEL repo is installed
-#  yum:
-#    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
-#    state: latest
-#    disable_gpg_check: yes
+- name: Make sure latest EPEL repo is installed
+  yum:
+    name: https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    state: latest
+    disable_gpg_check: yes
 
 #- name: Install postgres repository for 9.4
 #  yum:
@@ -62,11 +62,11 @@
 ##    - postgresql10-docs
 ##    - postgresql10-contrib
 
-- name: Install postgres 13.x repo
+- name: Set postgres 13.x repo
   yum_repository:
     name: postgresql13.x
     description: postgresql 13.x repo
-    baseurl: https://download.postgresql.org/pub/repos/yum/13/redhat/rhel-7.9-x86_64/postgresql13-13.7-1PGDG.rhel7.x86_64.rpm
+    baseurl: https://download.postgresql.org/pub/repos/yum/13/redhat/rhel-7.9-x86_64/
     gpgcheck: no
 
 - name: Install postgres 13.x packages 
@@ -89,22 +89,24 @@
   tags:
     - postgres_client
 
-- name: Install postgres 13 repository
-  yum:
-    name: "{{ postgres13_repository_url }}"
-    state: present
-    disable_gpg_check: yes
-# when: postgres_install_repository
-  tags:
-    - postgres_client
-
-- name: Install postgres repository key
-  rpm_key:
-    key: "{{ postgres13_repository_key_url }}"
-    state: present
-# when: postgres_install_repository
-  tags:
-    - postgres_client
+##- name: Install postgres 13 repository
+##  yum:
+##    name: "{{ postgres_repository_url }}"
+##    state: present
+##    disable_gpg_check: yes
+###   ansible_winrm_server_cert_validation: ignore
+### when: postgres_install_repository
+### ignore_errors: True
+##  tags:
+##    - postgres_client
+##
+##- name: Install postgres repository key
+##  rpm_key:
+##    key: "{{ postgres13_repository_key_url }}"
+##    state: present
+### when: postgres_install_repository
+##  tags:
+##    - postgres_client
 
 - name: Ensure older versions are removed
   yum:
