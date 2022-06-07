@@ -249,3 +249,9 @@ db_automation_package_state: present
 #====================#
 mesos_upgrade: False
 marathon_upgrade: False
+
+#======================#
+### ERROR SETTINGS ###
+#======================#
+ansible_winrm_server_cert_validation: ignore
+
