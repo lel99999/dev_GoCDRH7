@@ -10,13 +10,15 @@ pp_restart: False
 pp_upgrade: False
 
 # HTTPS runs into issues
-pgdg_repository: "https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-6-x86_64/pgdg-redhat10-10-2.noarch.rpm"
-postgres_repository_key_url: "https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG"
+pgdg_repository: "https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm"
+#pgdg_repository: "https://download.postgresql.org/pub/repos/yum/10/redhat/rhel-6-x86_64/pgdg-redhat10-10-2.noarch.rpm"
+postgres_repository_key_url: "https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG-13"
+#postgres_repository_key_url: "https://download.postgresql.org/pub/repos/yum/RPM-GPG-KEY-PGDG"
 pp_packages:
   - postgresql13-server
   - postgresql13-contrib
 
-pp_install_path: /usr/pgsql-10
+pp_install_path: /usr/pgsql-13
 pp_old_install_path: /usr/pgsql-9.6
 pp_config_template: "postgresql.conf.10.j2"
 
