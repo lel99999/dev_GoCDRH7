@@ -7,6 +7,7 @@ dependencies:
   - role: postgresql13-clientRH7
   - role: openjdk1.8
 # - role: jdk
-  - {role: epel7, when: "use_epel and not 'production' in group_names"}
+# - {role: epel7, when: "use_epel and not 'production' in group_names"}
+  - role: epel7
   - role: odbc7
   - role: jdbc7
