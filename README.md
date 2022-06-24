@@ -36,4 +36,13 @@ Download: [RedHat](https://www.gocd.org/download/#redhat)<br/>
 - RHEL 7 x86_64
   - [https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm](https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm) <br/>
 
+- Posgresql13 DB
+  - YUM:  postgresql13 postgresql13-server postgresql13-contrib (need for drivers)
+
+- AD Related Notes: AD2016 Install LDAP Role
+  - UserLoginFilter: (sAMAccountName={0})  
+  - UserSearchFilter: (|(sAMAccountName=*{0}*)(uid=*{0}*)(cn=*{0}*)(mail=*{0}*)(otherMailbox=*{0}*))
+  - DisplayNameAttribute: displayName/CN
+  
+
 
