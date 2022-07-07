@@ -32,6 +32,20 @@ Download: [RedHat](https://www.gocd.org/download/#redhat)<br/>
 #### Postgres Repo Info
 - Repo/RPM URLs Info
   [https://yum.postgresql.org/repopackages/](https://yum.postgresql.org/repopackages/) <br/>
+
+- Required Postgresql13 Packages:
+  - postgresql13
+  - postgresql13-server
+  - postgresql13-libs
+  - postgresql13-contrib
+
+- Build Base GoCD PostgresDB
+  ```
+  CREATE ROLE "gocd_database_user" PASSWORD 'gocd_database_password' NOSUPERUSER NOCREATEDB NOCREATEROLE INHERIT LOGIN;
+  CREATE DATABASE "gocd" ENCODING="UTF8" TEMPLATE="template0";
+  GRANT ALL PRIVILEGES ON DATABASE "gocd" TO "gocd_database_user";
+  ALTER ROLE "gocd_database_user" SUPERUSER;
+  ```
   
 - RHEL 7 x86_64
   - [https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm](https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm) <br/>
