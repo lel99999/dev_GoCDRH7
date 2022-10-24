@@ -1,0 +1,4 @@
+---
+dependencies:
+  - role: openjdk1.8
+# - role: jdk
