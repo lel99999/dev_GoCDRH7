@@ -62,12 +62,12 @@
   notify:
     - restart go-server
 
-- name: Install Postgresql13 Repo
-  yum:
-    name: https://download.postgresql.org/pub/repos/yum/reporps/EL-7-x86)64/pgdg-redhat-repo-latest.noarch.rpm
-    state: present
-    validate_certs: no
-    disable_gpg_check: yes
+#- name: Install Postgresql13 Repo
+#  yum:
+#    name: https://download.postgresql.org/pub/repos/yum/reporps/EL-7-x86)64/pgdg-redhat-repo-latest.noarch.rpm
+#    state: present
+#    validate_certs: no
+#    disable_gpg_check: yes
   
 - name: Install Postgresql13 for local Postgresql Backend
   yum:
