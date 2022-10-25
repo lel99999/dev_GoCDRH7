@@ -36,14 +36,14 @@
     state: present
     disable_gpg_check: yes
   when: not gocd_upgrade
-  notify:
-    - restart go-server
+#  notify:
+#    - restart go-server
 
 - name: Upgrade GoCD Server
   command: "rpm -U {{ gocd_server_package_path }}/{{ gocd_server_package_name }}"
   when: gocd_upgrade
-  notify:
-    - restart go-server
+#  notify:
+#    - restart go-server
 
 - name: Ensure working directory exists
   file:
@@ -52,15 +52,15 @@
     owner: go
     group: go
     mode: 0755
-  notify:
-    - restart go-server
+#  notify:
+#    - restart go-server
 
 - name: Add configuration options
   template:
     src: go-server.j2
     dest: /etc/default/go-server
-  notify:
-    - restart go-server
+#  notify:
+#    - restart go-server
 
 #- name: Install Postgresql13 Repo
 #  yum:
@@ -111,8 +111,8 @@
     owner: root
     group: root
     mode: 0744
-  notify: 
-    - restart go-server
+#  notify: 
+#    - restart go-server
 
 - name: Create password file
   copy:
@@ -121,8 +121,8 @@
     owner: go
     group: go
     mode: 0600
-  notify:
-    -  restart go-server
+#  notify:
+#    -  restart go-server
 
 - name: Open GoCD Server port
   command: "iptables -I {{ iptables_chain }} 3 -m state --state NEW -p tcp --dport {{ gocd_server_port }} -j ACCEPT"
